@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(DuplicateVehicleException.class)
-    public ResponseEntity<String> handlerDuplicateVehicle (DuplicateVehicleExceptionqq e){
+    public ResponseEntity<String> handlerDuplicateVehicle (DuplicateVehicleException e){
         return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
     }
 }
