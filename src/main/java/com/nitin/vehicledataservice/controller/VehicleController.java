@@ -3,6 +3,7 @@ package com.nitin.vehicledataservice.controller;
 import com.nitin.vehicledataservice.domain.Vehicle;
 import com.nitin.vehicledataservice.entity.VehicleEntity;
 import com.nitin.vehicledataservice.service.VehicleService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class VehicleController {
     }
 
     @PostMapping
-    public ResponseEntity<VehicleEntity> addVehicle(@RequestBody Vehicle vehicle){
+    public ResponseEntity<VehicleEntity> addVehicle(@RequestBody @Valid Vehicle vehicle){
         VehicleEntity vehicleEntity = vehicleService.saveVehicle(vehicle);
         return ResponseEntity.status(HttpStatus.CREATED).body(vehicleEntity);
     }
