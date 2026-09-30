@@ -15,7 +15,7 @@ public class VehicleEntity {
     private String type;
 
     @OneToMany(mappedBy = "vehicle")
-    private List<TelemetryReadingEntity> reading;
+    private List<TelemetryReadingEntity> readings;
 
     protected VehicleEntity(){}
 
@@ -37,6 +37,6 @@ public class VehicleEntity {
     }
 
     public void addReading(TelemetryReadingEntity telemetryReading){
-        this.reading.add(telemetryReading);
+        this.readings.add(telemetryReading);
     }
 }
