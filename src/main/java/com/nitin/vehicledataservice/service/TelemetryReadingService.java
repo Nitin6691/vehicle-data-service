@@ -8,8 +8,6 @@ import com.nitin.vehicledataservice.exception.VehicleNotFoundException;
 import com.nitin.vehicledataservice.repository.TelemetryReadingRepository;
 import com.nitin.vehicledataservice.repository.VehicleRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,36 +31,14 @@ public class TelemetryReadingService {
     }
 
     public List<TelemetryReadingResponse> getReadingsByVehicleId(String vehicleId) {
-        List<TelemetryReadingResponse> responseList = new ArrayList<>();
         List<TelemetryReadingEntity> entityList = telemetryReadingRepository.findByVehicle_VehicleId(vehicleId);
-
-        for (TelemetryReadingEntity entity : entityList){
-            responseList.add(
-                    new TelemetryReadingResponse(
-                            entity.getId(),
-                            entity.getVehicle().getVehicleId(),
-                            entity.getSpeed(),
-                            entity.getBatteryLevel()
-                    )
-            );
-        }
+        List<TelemetryReadingResponse> responseList = entityList.stream().map(TelemetryReadingResponse::from).toList();
         return responseList;
     }
 
     public List<TelemetryReadingResponse> findAllReadings() {
-        List<TelemetryReadingResponse> responseList = new ArrayList<>();
         List<TelemetryReadingEntity> entityList = telemetryReadingRepository.findAll();
-
-        for (TelemetryReadingEntity entity : entityList){
-            responseList.add(
-                    new TelemetryReadingResponse(
-                            entity.getId(),
-                            entity.getVehicle().getVehicleId(),
-                            entity.getSpeed(),
-                            entity.getBatteryLevel()
-                    )
-            );
-        }
+        List<TelemetryReadingResponse> responseList = entityList.stream().map(TelemetryReadingResponse::from).toList();
         return responseList;
     }
 }

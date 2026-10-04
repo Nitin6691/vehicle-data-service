@@ -1,5 +1,7 @@
 package com.nitin.vehicledataservice.dto;
 
+import com.nitin.vehicledataservice.entity.TelemetryReadingEntity;
+
 public class TelemetryReadingResponse {
         private final Long id;
         private final String vehicleId;
@@ -13,11 +15,21 @@ public class TelemetryReadingResponse {
             this.batteryLevel = batteryLevel;
         }
 
-    public Long getId() {
-        return id;
-    }
+        public static TelemetryReadingResponse from (TelemetryReadingEntity entity){
+            return new TelemetryReadingResponse (
+                entity.getId(),
+                entity.getVehicle().getVehicleId(),
+                entity.getSpeed(),
+                entity.getBatteryLevel()
+            );
+        }
 
-    public String getVehicleId() {
+
+        public Long getId() {
+            return id;
+        }
+
+        public String getVehicleId() {
             return vehicleId;
         }
 
