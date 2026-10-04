@@ -2,7 +2,6 @@ package com.nitin.vehicledataservice.controller;
 
 import com.nitin.vehicledataservice.domain.TelemetryReading;
 import com.nitin.vehicledataservice.dto.TelemetryReadingResponse;
-import com.nitin.vehicledataservice.entity.TelemetryReadingEntity;
 import com.nitin.vehicledataservice.service.TelemetryReadingService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
