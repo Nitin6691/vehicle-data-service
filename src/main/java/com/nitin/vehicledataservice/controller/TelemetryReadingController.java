@@ -26,8 +26,8 @@ public class TelemetryReadingController {
     }
 
     @GetMapping("/vehicles/{vehicleId}")
-    public List<TelemetryReadingResponse> getReadingByVehicleId(@PathVariable String vehicleId){
-        return telemetryReadingService.getReadingByVehicleId(vehicleId);
+    public List<TelemetryReadingResponse> getReadingsByVehicleId(@PathVariable String vehicleId){
+        return telemetryReadingService.getReadingsByVehicleId(vehicleId);
     }
 
     @GetMapping

@@ -17,11 +17,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, List<String>>> handleMethodArgumentValidationExceptions(MethodArgumentNotValidException ex){
-        Map<String, List<String>> errorList = new LinkedHashMap<>();
+        Map<String, List<String>> errors = new LinkedHashMap<>();
         for(FieldError error : ex.getBindingResult().getFieldErrors()){
-            errorList.computeIfAbsent(error.getField(), k -> new ArrayList<>()).add(error.getDefaultMessage());
+            errors.computeIfAbsent(error.getField(), k -> new ArrayList<>()).add(error.getDefaultMessage());
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorList);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 
     @ExceptionHandler(VehicleNotFoundException.class)
@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(DuplicateVehicleException.class)
-    public ResponseEntity<String> handlerDuplicateVehicle (DuplicateVehicleException e){
+    public ResponseEntity<String> handleDuplicateVehicle (DuplicateVehicleException e){
         return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
     }
 }

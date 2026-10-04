@@ -32,7 +32,7 @@ public class TelemetryReadingService {
                 telemetryReading.getBatteryLevel()));
     }
 
-    public List<TelemetryReadingResponse> getReadingByVehicleId(String vehicleId) {
+    public List<TelemetryReadingResponse> getReadingsByVehicleId(String vehicleId) {
         List<TelemetryReadingResponse> responseList = new ArrayList<>();
         List<TelemetryReadingEntity> entityList = telemetryReadingRepository.findByVehicle_VehicleId(vehicleId);
 
