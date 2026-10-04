@@ -4,8 +4,8 @@ import com.nitin.vehicledataservice.entity.VehicleEntity;
 
 public class VehicleResponse {
     private Long id;
-    String vehicleId;
-    String type;
+    private String vehicleId;
+    private String type;
 
     public VehicleResponse(Long id, String vehicleId, String type) {
         this.id = id;

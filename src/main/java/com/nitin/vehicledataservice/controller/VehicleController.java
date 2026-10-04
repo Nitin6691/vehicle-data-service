@@ -2,7 +2,6 @@ package com.nitin.vehicledataservice.controller;
 
 import com.nitin.vehicledataservice.domain.Vehicle;
 import com.nitin.vehicledataservice.dto.VehicleResponse;
-import com.nitin.vehicledataservice.entity.VehicleEntity;
 import com.nitin.vehicledataservice.service.VehicleService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
