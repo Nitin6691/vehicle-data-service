@@ -1,6 +1,7 @@
 package com.nitin.vehicledataservice.service;
 
 import com.nitin.vehicledataservice.domain.Vehicle;
+import com.nitin.vehicledataservice.dto.VehicleResponse;
 import com.nitin.vehicledataservice.entity.VehicleEntity;
 import com.nitin.vehicledataservice.exception.DuplicateVehicleException;
 import com.nitin.vehicledataservice.repository.VehicleRepository;
@@ -14,13 +15,13 @@ public class VehicleService {
         this.vehicleRepository = vehicleRepository;
     }
 
-    public VehicleEntity saveVehicle(Vehicle vehicle){
+    public VehicleResponse saveVehicle(Vehicle vehicle){
         if(!vehicleRepository.existsByVehicleId(vehicle.getVehicleId())) {
             VehicleEntity vehicleEntity = new VehicleEntity(
                     vehicle.getVehicleId(),
                     vehicle.getType()
             );
-            return vehicleRepository.save(vehicleEntity);
+            return VehicleResponse.from(vehicleRepository.save(vehicleEntity));
         }else {
             throw new DuplicateVehicleException("Vehicle already exists in DB");
         }

@@ -1,6 +1,7 @@
 package com.nitin.vehicledataservice.controller;
 
 import com.nitin.vehicledataservice.domain.Vehicle;
+import com.nitin.vehicledataservice.dto.VehicleResponse;
 import com.nitin.vehicledataservice.entity.VehicleEntity;
 import com.nitin.vehicledataservice.service.VehicleService;
 import jakarta.validation.Valid;
@@ -21,8 +22,8 @@ public class VehicleController {
     }
 
     @PostMapping
-    public ResponseEntity<VehicleEntity> addVehicle(@RequestBody @Valid Vehicle vehicle){
-        VehicleEntity vehicleEntity = vehicleService.saveVehicle(vehicle);
-        return ResponseEntity.status(HttpStatus.CREATED).body(vehicleEntity);
+    public ResponseEntity<VehicleResponse> addVehicle(@RequestBody @Valid Vehicle vehicle){
+        VehicleResponse vehicleResponse = vehicleService.saveVehicle(vehicle);
+        return ResponseEntity.status(HttpStatus.CREATED).body(vehicleResponse);
     }
 }
