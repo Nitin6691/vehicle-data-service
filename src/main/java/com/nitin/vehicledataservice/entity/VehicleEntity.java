@@ -2,7 +2,6 @@ package com.nitin.vehicledataservice.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 
 @Entity
 public class VehicleEntity {
@@ -13,9 +12,6 @@ public class VehicleEntity {
     private String vehicleId;
     @Column(nullable = false)
     private String type;
-
-    @OneToMany(mappedBy = "vehicle")
-    private List<TelemetryReadingEntity> readings;
 
     protected VehicleEntity(){}
 
@@ -36,7 +32,4 @@ public class VehicleEntity {
         return type;
     }
 
-    public void addReading(TelemetryReadingEntity telemetryReading){
-        this.readings.add(telemetryReading);
-    }
 }
