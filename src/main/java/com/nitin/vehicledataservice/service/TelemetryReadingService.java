@@ -20,14 +20,16 @@ public class TelemetryReadingService {
         this.vehicleRepository = vehicleRepository;
     }
 
-    public TelemetryReadingEntity save(TelemetryReading telemetryReading) {
+    public TelemetryReadingResponse save(TelemetryReading telemetryReading) {
         VehicleEntity vehicle = vehicleRepository.findByVehicleId(telemetryReading.getVehicleId())
                 .orElseThrow(() -> new VehicleNotFoundException("Vehicle "+telemetryReading.getVehicleId()+" does not exist in Database"));
 
-        return telemetryReadingRepository.save(new TelemetryReadingEntity(
+        TelemetryReadingEntity entity =  telemetryReadingRepository.save(new TelemetryReadingEntity(
                 vehicle,
                 telemetryReading.getSpeed(),
                 telemetryReading.getBatteryLevel()));
+
+        return TelemetryReadingResponse.from(entity);
     }
 
     public List<TelemetryReadingResponse> getReadingsByVehicleId(String vehicleId) {

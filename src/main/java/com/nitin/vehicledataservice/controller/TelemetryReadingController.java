@@ -20,9 +20,9 @@ public class TelemetryReadingController {
     }
 
     @PostMapping
-    public ResponseEntity<TelemetryReadingEntity> saveTelemetryReading(@Valid @RequestBody TelemetryReading telemetryReading){
-        TelemetryReadingEntity entity = telemetryReadingService.save(telemetryReading);
-        return ResponseEntity.status(HttpStatus.CREATED).body(entity);
+    public ResponseEntity<TelemetryReadingResponse> saveTelemetryReading(@Valid @RequestBody TelemetryReading telemetryReading){
+        TelemetryReadingResponse telemetryReadingResponse = telemetryReadingService.save(telemetryReading);
+        return ResponseEntity.status(HttpStatus.CREATED).body(telemetryReadingResponse);
     }
 
     @GetMapping("/vehicles/{vehicleId}")
