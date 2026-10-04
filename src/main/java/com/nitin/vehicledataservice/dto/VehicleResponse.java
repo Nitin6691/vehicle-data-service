@@ -3,9 +3,9 @@ package com.nitin.vehicledataservice.dto;
 import com.nitin.vehicledataservice.entity.VehicleEntity;
 
 public class VehicleResponse {
-    private Long id;
-    private String vehicleId;
-    private String type;
+    private final Long id;
+    private final String vehicleId;
+    private final String type;
 
     public VehicleResponse(Long id, String vehicleId, String type) {
         this.id = id;
