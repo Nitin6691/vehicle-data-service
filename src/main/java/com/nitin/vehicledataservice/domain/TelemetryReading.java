@@ -2,10 +2,12 @@ package com.nitin.vehicledataservice.domain;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class TelemetryReading {
     private static final int CRITICAL_BATTERY_THRESHOLD = 20;
+    @NotBlank(message = "vehicle id is required")
     private final String vehicleId;
     @Min(value = 0, message = "speed cannot be negative")
     @NotNull(message = "speed is required")
