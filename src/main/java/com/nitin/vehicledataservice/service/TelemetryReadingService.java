@@ -30,8 +30,7 @@ public class TelemetryReadingService {
                 vehicle,
                 telemetryReading.getSpeed(),
                 telemetryReading.getBatteryLevel(),
-                telemetryReading.getRecordedAt(),
-                Instant.now()));
+                telemetryReading.getRecordedAt()));
 
         return TelemetryReadingResponse.from(entity);
     }

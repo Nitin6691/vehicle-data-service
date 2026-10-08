@@ -19,7 +19,7 @@ public class TelemetryReading {
     @NotNull(message = "battery level is required")
     private final Integer batteryLevel;
     @NotNull(message = "recorded at time is required")
-    private Instant recordedAt;
+    private final Instant recordedAt;
 
     public Instant getRecordedAt() {
         return recordedAt;

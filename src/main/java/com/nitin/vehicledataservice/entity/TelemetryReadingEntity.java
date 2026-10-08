@@ -1,7 +1,6 @@
 package com.nitin.vehicledataservice.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.Instant;
 
@@ -27,12 +26,12 @@ public class TelemetryReadingEntity {
     protected TelemetryReadingEntity() {
     }
 
-    public TelemetryReadingEntity(VehicleEntity vehicle, int speed, int batteryLevel, Instant recordedAt, Instant receivedAt) {
+    public TelemetryReadingEntity(VehicleEntity vehicle, int speed, int batteryLevel, Instant recordedAt) {
         this.vehicle = vehicle;
         this.speed = speed;
         this.batteryLevel = batteryLevel;
         this.recordedAt = recordedAt;
-        this.receivedAt = receivedAt;
+        this.receivedAt = Instant.now();
     }
 
     public Long getId() {
