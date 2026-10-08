@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.Instant;
+
 public class TelemetryReading {
     private static final int CRITICAL_BATTERY_THRESHOLD = 20;
     @NotBlank(message = "vehicle id is required")
@@ -16,11 +18,18 @@ public class TelemetryReading {
     @Max(value = 100, message = "battery level cannot be more than 100%")
     @NotNull(message = "battery level is required")
     private final Integer batteryLevel;
+    @NotNull(message = "recorded at time is required")
+    private Instant recordedAt;
 
-    public TelemetryReading(String vehicleId, Integer speed, Integer batteryLevel){
+    public Instant getRecordedAt() {
+        return recordedAt;
+    }
+
+    public TelemetryReading(String vehicleId, Integer speed, Integer batteryLevel, Instant recordedAt) {
         this.vehicleId = vehicleId;
         this.speed = speed;
         this.batteryLevel = batteryLevel;
+        this.recordedAt = recordedAt;
     }
 
     public String getVehicleId() {
