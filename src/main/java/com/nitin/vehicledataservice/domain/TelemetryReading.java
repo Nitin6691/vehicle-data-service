@@ -21,9 +21,6 @@ public class TelemetryReading {
     @NotNull(message = "recorded at time is required")
     private final Instant recordedAt;
 
-    public Instant getRecordedAt() {
-        return recordedAt;
-    }
 
     public TelemetryReading(String vehicleId, Integer speed, Integer batteryLevel, Instant recordedAt) {
         this.vehicleId = vehicleId;
@@ -44,7 +41,11 @@ public class TelemetryReading {
         return batteryLevel;
     }
 
-    public boolean isCriticalBattery(){
+    public Instant getRecordedAt() {
+        return recordedAt;
+    }
+
+    public boolean isCriticalBattery() {
         return batteryLevel < CRITICAL_BATTERY_THRESHOLD;
     }
 }
