@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.time.Instant;
 
 @Entity
+@Table (indexes = @Index(name = "idx_telemetry_vehicle_ref", columnList = "vehicle_ref"))
 public class TelemetryReadingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
