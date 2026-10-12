@@ -8,7 +8,6 @@ import com.nitin.vehicledataservice.exception.VehicleNotFoundException;
 import com.nitin.vehicledataservice.repository.TelemetryReadingRepository;
 import com.nitin.vehicledataservice.repository.VehicleRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
